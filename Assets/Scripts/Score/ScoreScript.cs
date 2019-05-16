@@ -1,0 +1,29 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class ScoreScript : MonoBehaviour
+{
+      public static ScoreScript instance;
+      private Text scoreText;
+      private int score;
+
+      void Awake()
+      {
+            scoreText = GameObject.Find("Score Text").GetComponent<Text>();
+
+            if (instance == null)
+            {
+                  instance = this;
+            }
+
+      }
+
+      public void SetScore()
+      {
+            score++;
+            scoreText.text = score.ToString();
+      }
+
+}

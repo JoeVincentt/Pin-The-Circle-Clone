@@ -14,7 +14,6 @@ public class NeedleMovementScript : MonoBehaviour
       private void Awake()
       {
             Initialize();
-            FireTheNeedle();
       }
 
       private void Initialize()
@@ -48,6 +47,17 @@ public class NeedleMovementScript : MonoBehaviour
                   touchedTheCircle = true;
 
                   myRigidBody2D.simulated = false;
+                  gameObject.transform.SetParent(target.transform);
+
+                  if (ScoreScript.instance != null)
+                  {
+                        ScoreScript.instance.SetScore();
+                  }
+
+                  //   if (GameManager.instance != null)
+                  //   {
+                  //         GameManager.instance.InstantiateNeedle();
+                  //   }
             }
       }
 }

@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class CircleRotateScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+      [SerializeField] private float rotationSpeed = 50f;
+      private bool canRotate;
+      private float rotationAngle;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+      private void Awake()
+      {
+            canRotate = true;
+      }
+
+      void Update()
+      {
+            if (canRotate)
+            {
+                  RotateTheCircle();
+            }
+      }
+
+      private void RotateTheCircle()
+      {
+            rotationAngle = transform.rotation.eulerAngles.z;
+            rotationAngle += rotationSpeed * Time.deltaTime;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotationAngle));
+      }
 }
